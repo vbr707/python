@@ -1,0 +1,13 @@
+idno=int(input("IDNO: "))
+name=input("NAME: ")
+salary=float(input("SALARY: "))
+import sqlite3 as s
+conn=s.connect("vbr.db")
+#curs=conn.execute("create table employee(idno number primary key,name varchar,salary real)")
+#print("employee table created")
+curs=conn.cursor()
+curs.execute("insert into employee values(?,?,?)",(idno,name,salary))
+conn.commit()
+print("data inserted")
+conn.close()
+print("connection closed")
